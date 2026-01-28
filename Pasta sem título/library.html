@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Piano Booster Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/library.js" defer></script>
+    <style>
+        /* Inline page specific styles for simplicity or move to css/library.css later */
+        .filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .music-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .music-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img {
+            height: 140px;
+            background: #222;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .play-overlay {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.3s;
+            border: 2px solid white;
+        }
+
+        .music-card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .music-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-artist {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 10px;
+        }
+
+        .badge-difficulty {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .badge-difficulty.easy {
+            background: rgba(46, 213, 115, 0.2);
+            color: var(--success);
+        }
+
+        .badge-difficulty.medium {
+            background: rgba(255, 189, 46, 0.2);
+            color: #ffbd2e;
+        }
+
+        .badge-difficulty.hard {
+            background: rgba(255, 71, 87, 0.2);
+            color: var(--danger);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <div class="logo"><span>🎹</span> PB Converter</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="converter.html">Conversor</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>
+            <li><a href="library.html" class="active">Biblioteca</a></li>
+            <li><a href="dashboard.html" class="btn btn-secondary" style="padding: 8px 16px;">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="container" style="padding-top: 120px;">
+        <div class="text-center mb-4">
+            <h1 class="animate-enter">Biblioteca de Músicas</h1>
+            <p class="text-muted animate-enter delay-100">Explore músicas convertidas pela comunidade.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters animate-enter delay-200">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="classico">Clássico</button>
+            <button class="filter-btn" data-filter="pop">Pop</button>
+            <button class="filter-btn" data-filter="anime">Anime OST</button>
+            <button class="filter-btn" data-filter="rock">Rock</button>
+        </div>
+
+        <!-- Grid -->
+        <div id="music-grid" class="music-grid animate-enter delay-300">
+            <!-- Cards will be injected by JS -->
+        </div>
+    </main>
+</body>
+
+</html>

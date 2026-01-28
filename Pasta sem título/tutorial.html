@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial - Piano Booster Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="js/main.js" defer></script>
+    <style>
+        .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--secondary);
+        }
+
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+            color: var(--text-muted);
+        }
+
+        .accordion-content.active {
+            padding: 20px;
+            padding-top: 0;
+            max-height: 500px;
+        }
+
+        .icon-plus {
+            transition: 0.3s;
+        }
+
+        .accordion-content.active+.accordion-header .icon-plus {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <div class="logo"><span>🎹</span> PB Converter</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="converter.html">Conversor</a></li>
+            <li><a href="tutorial.html" class="active">Tutorial</a></li>
+            <li><a href="library.html">Biblioteca</a></li>
+            <li><a href="dashboard.html" class="btn btn-secondary" style="padding: 8px 16px;">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="container" style="padding-top: 120px;">
+        <div class="header-section text-center mb-4">
+            <h1 class="animate-enter">Configurando o Piano Booster</h1>
+            <p class="text-muted animate-enter delay-100">Tudo que você precisa para começar a tocar.</p>
+        </div>
+
+        <div class="row" style="display: flex; gap: 40px; flex-wrap: wrap;">
+            <!-- Video Section -->
+            <div class="col animate-enter delay-200" style="flex: 2; min-width: 300px;">
+                <div class="video-placeholder"
+                    style="background: #000; height: 350px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; border: 1px solid #333; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; width: 100%; height: 100%; background: url('https://placehold.co/600x400/151522/FFF?text=Video+Tutorial') no-repeat center; opacity: 0.5;">
+                    </div>
+                    <button class="btn btn-primary"
+                        style="z-index: 2; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; padding: 0;">▶</button>
+                </div>
+                <div class="mt-2">
+                    <h3>Passos Rápidos:</h3>
+                    <ol style="margin-left: 20px; margin-top: 10px; color: var(--text-muted);">
+                        <li class="mb-1">Baixe o Piano Booster para seu sistema.</li>
+                        <li class="mb-1">Conecte seu teclado MIDI (USB).</li>
+                        <li class="mb-1">Abra o arquivo MIDI convertido.</li>
+                        <li>Ajuste a velocidade e comece a praticar!</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="col animate-enter delay-300" style="flex: 1.5; min-width: 300px;">
+                <h3 class="mb-2">Perguntas Frequentes</h3>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Preciso de um teclado real?
+                        <span class="icon-plus">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        Realmente recomendamos um teclado MIDI ou um piano digital com saída USB para aproveitar o
+                        feedback em tempo real, mas você pode usar o teclado do PC para testar.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        O software é gratuito?
+                        <span class="icon-plus">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        Sim! O Piano Booster é open source e gratuito. Nosso conversor também é 100% grátis.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Funciona no Mac/Linux?
+                        <span class="icon-plus">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        Sim, há versões para Windows, macOS e Linux. Verifique a página oficial do projeto.
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 text-center" style="background: var(--bg-card); border-radius: var(--radius-md);">
+                    <h4>Ainda tem dúvidas?</h4>
+                    <button class="btn btn-secondary mt-1">Acessar Fórum</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Simple accordion logic
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isActive = content.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+
+                // Toggle current
+                if (!isActive) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

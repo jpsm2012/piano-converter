@@ -1,0 +1,368 @@
+/* Landing Page Specifics */
+
+/* Hero */
+.hero-section {
+    position: relative;
+    padding: 160px 0 100px;
+    background: radial-gradient(circle at top right, #1a1a2e, var(--bg-dark));
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Hero Visual - Piano */
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.piano-visual {
+    display: flex;
+    background: #333;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transform: rotateY(-10deg) rotateX(5deg);
+    transition: transform 0.5s ease;
+}
+
+.piano-visual:hover {
+    transform: rotateY(0deg) rotateX(0deg);
+}
+
+.key {
+    width: 40px;
+    height: 160px;
+    background: white;
+    margin: 0 1px;
+    border-radius: 0 0 4px 4px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.key:active,
+.key.active {
+    background: #eee;
+    transform: scale(0.98);
+}
+
+.key.black {
+    width: 24px;
+    height: 100px;
+    background: #111;
+    position: absolute;
+    margin-left: -12px;
+    z-index: 2;
+    border-radius: 0 0 2px 2px;
+}
+
+/* Adjusting margins for correct white key placement when blacks are absolute is tricky in pure CSS flex without complex structural changes or grid. 
+   Simplified approach for visual demo: Just flex white keys and inset black keys inside them or separate structure.
+   Better visual representation for the demo:
+*/
+.piano-visual {
+    position: relative;
+    height: 180px;
+    width: 300px;
+    /* approximative */
+    background: #1a1a1a;
+    display: flex;
+    /* flex white keys */
+    overflow: hidden;
+    padding: 0;
+}
+
+.key.white {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #ccc;
+    height: 100%;
+    z-index: 1;
+    border-radius: 0 0 5px 5px;
+}
+
+.key.black {
+    position: absolute;
+    top: 0;
+    width: 8%;
+    /* relative to container width */
+    height: 60%;
+    background: #000;
+    z-index: 2;
+    /* Manually positioning black keys for demo look */
+}
+
+.key.black:nth-child(2) {
+    left: 10%;
+}
+
+.key.black:nth-child(4) {
+    left: 24%;
+}
+
+.key.black:nth-child(7) {
+    left: 52%;
+}
+
+.key.black:nth-child(9) {
+    left: 66%;
+}
+
+.key.black:nth-child(11) {
+    left: 80%;
+}
+
+/* Divider */
+.custom-shape-divider-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 64px;
+}
+
+.custom-shape-divider-bottom .shape-fill {
+    fill: var(--bg-dark);
+    opacity: 0.5;
+}
+
+/* Process Section */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.step-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.step-card h3 {
+    margin-bottom: 10px;
+    color: var(--secondary);
+}
+
+/* Benefits Section */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.benefit-list {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.benefit-list li {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.check-icon {
+    background: rgba(46, 213, 115, 0.2);
+    color: var(--success);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.screenshot-placeholder {
+    width: 100%;
+    height: 300px;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.screen-header {
+    height: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+
+.music-staff {
+    padding: 40px;
+    position: relative;
+}
+
+.line {
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.note {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--primary);
+    animation: float 3s infinite ease-in-out;
+}
+
+/* Footer */
+.main-footer {
+    background: #050508;
+    padding: 60px 0 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: var(--text-muted);
+}
+
+.footer-col ul li a:hover {
+    color: var(--secondary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        display: none;
+        /* Add mobile menu later if needed */
+    }
+}
